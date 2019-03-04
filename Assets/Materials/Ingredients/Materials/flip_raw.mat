@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: appleslice
+  m_Name: flip_raw
   m_Shader: {fileID: 4800000, guid: 645ddb695a089034b803c929e740378f, type: 3}
   m_ShaderKeywords: _ALPHATEST_ON
   m_LightmapFlags: 4
@@ -33,7 +33,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: b92ed8b7be2968f42a3346696ff35a80, type: 3}
+        m_Texture: {fileID: 2800000, guid: b6cc1d0257311a042b4d537caac12394, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
