@@ -8,7 +8,7 @@ public class Compote : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.tag == "Apple")
+        if (other.gameObject.tag == "Smallpple")
         {
             Instantiate(compote, gameObject.transform.position, Quaternion.identity);
 

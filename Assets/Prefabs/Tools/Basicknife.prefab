@@ -14,10 +14,10 @@ GameObject:
   - component: {fileID: 1800272312}
   - component: {fileID: 200488911011952434}
   - component: {fileID: 1800272308}
-  - component: {fileID: 1800272306}
   - component: {fileID: 1800272311}
+  - component: {fileID: 1673544511100207720}
   m_Layer: 0
-  m_Name: TFYK_knife
+  m_Name: BasicKnife
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -125,18 +125,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &1800272306
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1800272305}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 944211baff6487d46bcc57630f8413fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1800272311
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -149,3 +137,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52098f7184059f94ab52dc0cc5e2285a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1673544511100207720
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1800272305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1b8e8575dbceb94c998e32bf33e63b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tags:
+  - Apple
+  - Halfpple
+  - Slicepple
+  objects:
+  - {fileID: 1997243237, guid: 9da545f0f0bb8fa439420e79c3e95bc7, type: 3}
+  - {fileID: 204619880, guid: c4fa9dd05e5706847a5d2e45304a53f1, type: 3}
+  - {fileID: 1160622762, guid: 0308fbccf9cebc249ae672f87f2ba648, type: 3}
