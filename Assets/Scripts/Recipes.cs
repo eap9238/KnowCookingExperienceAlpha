@@ -14,6 +14,14 @@ public class Recipes : MonoBehaviour
     public Dictionary<(string, string), float> twoItemTimes = new Dictionary<(string, string), float>();
     public Dictionary<(string, string, string), float> threeItemTimes = new Dictionary<(string, string, string), float>();
 
+    /*
+
+    public Dictionary<string, float> oneItemCounts = new Dictionary<string, float>();
+    public Dictionary<(string, string), float> twoItemCounts = new Dictionary<(string, string), float>();
+    public Dictionary<(string, string, string), float> threeItemCounts = new Dictionary<(string, string, string), float>();
+
+    */
+
     public string[] oneIngredient;
     public string[] twoIngredient1;
     public string[] twoIngredient2;
@@ -29,6 +37,14 @@ public class Recipes : MonoBehaviour
     public float[] twoTimer;
     public float[] threeTimer;
 
+    /*
+
+    public float[] oneCount;
+    public float[] twoCount;
+    public float[] threeCount;
+
+    */
+
     // Start is called before the first frame update
     void Start()
     {
@@ -36,18 +52,21 @@ public class Recipes : MonoBehaviour
         {
             oneItemRecipes.Add(oneIngredient[i], oneResult[i]);
             oneItemTimes.Add(oneIngredient[i], oneTimer[i]);
+            //oneItemCounts.Add(oneIngredient[i], oneCount[i]);
         }
 
         for (int i = 0; i < twoIngredient1.Length; i++)
         {
             twoItemRecipes.Add((twoIngredient1[i], twoIngredient2[i]), twoResult[i]);
             twoItemTimes.Add((twoIngredient1[i], twoIngredient2[i]), twoTimer[i]);
+            //twoItemCounts.Add((twoIngredient1[i], twoIngredient2[i]), twoCount[i]);
         }
 
         for (int i = 0; i < threeIngredient1.Length; i++)
         {
             threeItemRecipes.Add((threeIngredient1[i], threeIngredient2[i], threeIngredient3[i]), threeResult[i]);
             threeItemTimes.Add((threeIngredient1[i], threeIngredient2[i], threeIngredient3[i]), threeTimer[i]);
+            //threeItemCounts.Add((threeIngredient1[i], threeIngredient2[i], threeIngredient3[i]), threeCount[i]);
         }
     }
 
@@ -90,6 +109,30 @@ public class Recipes : MonoBehaviour
             return RuinedDish;
         }
     }
+
+    /*
+
+    public float GetCount(List<Collider> ingredients)
+    {
+        if (ingredients.Count == 1)
+        {
+            return findOneItemCount(ingredients[0].tag);
+        }
+        else if (ingredients.Count == 2)
+        {
+            return findTwoItemCount(ingredients[0].tag, ingredients[1].tag);
+        }
+        else if (ingredients.Count == 3)
+        {
+            return findThreeItemCount(ingredients[0].tag, ingredients[1].tag, ingredients[2].tag);
+        }
+        else
+        {
+            return 1;
+        }
+    }
+
+    */
 
     private GameObject findOneItemRecipe(string ingredient1)
     {
@@ -144,6 +187,7 @@ public class Recipes : MonoBehaviour
 
         return RuinedDish;
     }
+
     private float findOneItemTime(string ingredient1)
     {
         if (oneItemTimes.ContainsKey(ingredient1))
@@ -197,4 +241,62 @@ public class Recipes : MonoBehaviour
 
         return 30;
     }
+
+    /*
+
+    private float findOneItemCount(string ingredient1)
+    {
+        if (oneItemCounts.ContainsKey(ingredient1))
+        {
+            return oneItemCounts[ingredient1];
+        }
+
+        return 30;
+    }
+
+    private float findTwoItemCount(string ingredient1, string ingredient2)
+    {
+        if (twoItemCounts.ContainsKey((ingredient1, ingredient2)))
+        {
+            return twoItemCounts[(ingredient1, ingredient2)];
+        }
+        else if (twoItemCounts.ContainsKey((ingredient2, ingredient1)))
+        {
+            return twoItemCounts[(ingredient2, ingredient1)];
+        }
+
+        return 30;
+    }
+
+    private float findThreeItemCount(string ingredient1, string ingredient2, string ingredient3)
+    {
+        if (threeItemCounts.ContainsKey((ingredient1, ingredient2, ingredient3)))
+        {
+            return threeItemCounts[(ingredient1, ingredient2, ingredient3)];
+        }
+        else if (threeItemCounts.ContainsKey((ingredient1, ingredient3, ingredient2)))
+        {
+            return threeItemCounts[(ingredient1, ingredient3, ingredient2)];
+        }
+        else if (threeItemCounts.ContainsKey((ingredient2, ingredient1, ingredient3)))
+        {
+            return threeItemCounts[(ingredient2, ingredient1, ingredient3)];
+        }
+        else if (threeItemCounts.ContainsKey((ingredient2, ingredient3, ingredient1)))
+        {
+            return threeItemCounts[(ingredient2, ingredient3, ingredient1)];
+        }
+        else if (threeItemCounts.ContainsKey((ingredient3, ingredient1, ingredient2)))
+        {
+            return threeItemCounts[(ingredient3, ingredient1, ingredient2)];
+        }
+        else if (threeItemCounts.ContainsKey((ingredient3, ingredient2, ingredient1)))
+        {
+            return threeItemCounts[(ingredient3, ingredient2, ingredient1)];
+        }
+
+        return 30;
+    }
+
+    */
 }

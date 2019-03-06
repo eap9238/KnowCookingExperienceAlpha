@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 703839082068927760}
   - component: {fileID: 5938540731415230338}
   - component: {fileID: 8149050460913024224}
+  - component: {fileID: 1286030196993815092}
   m_Layer: 0
   m_Name: Batter
   m_TagString: Batterthree
@@ -122,3 +123,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 944211baff6487d46bcc57630f8413fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1286030196993815092
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8547247129507065079}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1860b30a69bfc647b22b70c217a5e73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  count: 8
