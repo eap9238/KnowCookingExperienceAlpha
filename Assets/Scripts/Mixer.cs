@@ -45,7 +45,7 @@ public class Mixer : MonoBehaviour
         {
             if (visitorList.Count > 0)
             {
-                currentMix += Time.deltaTime / toolList.Count;
+                currentMix += (Time.deltaTime / toolList.Count); //* (other.gameObject.GetComponent<Rigidbody>().velocity.magnitude);
             }
         }
         else if (other.gameObject.tag != "RuinedDish")

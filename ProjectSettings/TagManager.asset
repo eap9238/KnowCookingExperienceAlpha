@@ -28,6 +28,7 @@ TagManager:
   - Milk
   - Vanilla
   - Flour
+  - Heatingelement
   layers:
   - Default
   - TransparentFX

@@ -13,13 +13,15 @@ public class Cooker : MonoBehaviour
     private TextMeshPro text;
 
     private List<Collider> visitorList = new List<Collider>();
-    //private List<Collider> toolList = new List<Collider>();
+    private GameObject[] heatingElements;
 
     // Start is called before the first frame update
     void Start()
     {
         text = gameObject.GetComponentInChildren<TextMeshPro>();
         recipe = cookBook.GetComponent<Recipes>();
+
+        heatingElements = GameObject.FindGameObjectsWithTag("Heatingelement");
 
         cookTime = 0;
         seekTime = 30;
@@ -41,22 +43,28 @@ public class Cooker : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.tag != "RuinedDish" && other.gameObject.tag != "Tool")
+        if (other.gameObject.tag != "RuinedDish" && other.gameObject.tag != "Tool" && other.gameObject.tag != null)
         {
-            if (cookTime > seekTime)
+            foreach (GameObject element in heatingElements)
             {
-                cook(recipe.getResult(visitorList));
-            }
-            else
-            {
-                cookTime += Time.deltaTime / visitorList.Count;
+                if ((Vector3.Distance(gameObject.transform.position, element.transform.position)) < .2)
+                {
+                    if (cookTime > seekTime)
+                    {
+                        cook(recipe.getResult(visitorList));
+                    }
+                    else
+                    {
+                        cookTime += Time.deltaTime / visitorList.Count;
+                    }
+                }
             }
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag != "RuinedDish" && other.gameObject.tag != "Tool")
+        if (other.gameObject.tag != "RuinedDish" && other.gameObject.tag != "Tool" && other.gameObject.tag != null)
         {
             visitorList.Add(other);
 
@@ -68,7 +76,7 @@ public class Cooker : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.tag != "RuinedDish" && other.gameObject.tag != "Tool")
+        if (other.gameObject.tag != "RuinedDish" && other.gameObject.tag != "Tool" && other.gameObject.tag != null)
         {
             visitorList.Remove(other);
 
