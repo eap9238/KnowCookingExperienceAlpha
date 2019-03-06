@@ -11,7 +11,9 @@ public class Mixer : MonoBehaviour
     private float seekMix;
     private float currentMix;
     private TextMeshPro text;
+
     private List<Collider> visitorList = new List<Collider>();
+    private List<Collider> toolList = new List<Collider>();
 
     // Start is called before the first frame update
     void Start()
@@ -39,74 +41,52 @@ public class Mixer : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.tag != "RuinedDish" && other.gameObject.tag != "Tool")
+        if (other.gameObject.tag == "Tool")
         {
             if (visitorList.Count > 0)
             {
-                if (currentMix > seekMix)
-                {
-                    List<Collider> temp = new List<Collider>();
-
-                    foreach (Collider coll in visitorList)
-                    {
-                        if (coll.gameObject.tag != "RuinedDish" && coll.gameObject.tag != "Tool")
-                        {
-                            temp.Add(coll);
-                        }
-                    }
-
-                    mix(recipe.getResult(temp));
-                }
+                currentMix += Time.deltaTime / toolList.Count;
             }
         }
-        else if (other.gameObject.tag != "RuinedDish" && other.gameObject.tag == "Tool")
+        else if (other.gameObject.tag != "RuinedDish")
         {
-            currentMix += Time.deltaTime;
+            if (currentMix > seekMix)
+            {
+                mix(recipe.getResult(visitorList));
+            }
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        visitorList.Add(other);
-
-        if (other.gameObject.tag != "RuinedDish" && other.gameObject.tag != "Tool")
+        if (other.gameObject.tag == "Tool")
         {
+            toolList.Add(other);
+        }
+        else if (other.gameObject.tag != "RuinedDish")
+        {
+            visitorList.Add(other);
+
             currentMix = 0;
 
-            List<Collider> temp = new List<Collider>();
-
-            foreach (Collider coll in visitorList)
-            {
-                if (coll.gameObject.tag != "RuinedDish" && coll.gameObject.tag != "Tool")
-                {
-                    temp.Add(coll);
-                }
-            }
-
-            seekMix = recipe.calcTime(temp);
+            seekMix = recipe.calcTime(visitorList);
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        visitorList.Remove(other);
-
-        if (other.gameObject.tag != "RuinedDish" && other.gameObject.tag != "Tool")
+        if (other.gameObject.tag == "Tool")
         {
-            currentMix = 0;
-
-            List<Collider> temp = new List<Collider>();
-
-            foreach (Collider coll in visitorList)
-            {
-                if (coll.gameObject.tag != "RuinedDish" && coll.gameObject.tag != "Tool")
-                {
-                    temp.Add(coll);
-                }
-            }
-
-            seekMix = recipe.calcTime(temp);
+            toolList.Remove(other);
         }
+        else if (other.gameObject.tag != "RuinedDish")
+        {
+            visitorList.Remove(other); 
+
+            currentMix = 0;
+            
+            seekMix = recipe.calcTime(visitorList);
+        }       
     }
 
     private void mix(GameObject result)
@@ -117,21 +97,11 @@ public class Mixer : MonoBehaviour
 
         while (visitorList.Count > 0)
         {
-            if (visitorList[0].gameObject.tag != "RuinedDish" && visitorList[0].gameObject.tag != "Tool")
-            {
-                Collider temp = visitorList[0];
+            Collider temp = visitorList[0];
 
-                visitorList.Remove(temp);
-                Destroy(temp.gameObject);
-            }
-            else
-            {
-                tools.Add(visitorList[0]);
-                visitorList.Remove(visitorList[0]);
-            }
+            visitorList.Remove(temp);
+            Destroy(temp.gameObject);
         }
-
-        visitorList.AddRange(tools);
 
         Instantiate(result, gameObject.transform.position + new Vector3(0, 0.1f, 0), Quaternion.identity);
     }

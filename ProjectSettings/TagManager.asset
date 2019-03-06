@@ -19,6 +19,15 @@ TagManager:
   - Nocake
   - Onecake
   - Compote
+  - Egg
+  - Yolk
+  - Batterone
+  - Battertwo
+  - Batterthree
+  - Butter
+  - Milk
+  - Vanilla
+  - Flour
   layers:
   - Default
   - TransparentFX

@@ -11,7 +11,9 @@ public class Cooker : MonoBehaviour
     private float seekTime;
     private float cookTime;
     private TextMeshPro text;
+
     private List<Collider> visitorList = new List<Collider>();
+    //private List<Collider> toolList = new List<Collider>();
 
     // Start is called before the first frame update
     void Start()
@@ -41,71 +43,38 @@ public class Cooker : MonoBehaviour
     {
         if (other.gameObject.tag != "RuinedDish" && other.gameObject.tag != "Tool")
         {
-            if (visitorList.Count > 0)
+            if (cookTime > seekTime)
             {
-                if (cookTime > seekTime)
-                {
-                    List<Collider> temp = new List<Collider>();
-
-                    foreach (Collider coll in visitorList)
-                    {
-                        if (coll.gameObject.tag != "RuinedDish" && coll.gameObject.tag != "Tool")
-                        {
-                            temp.Add(coll);
-                        }
-                    }
-
-                    cook(recipe.getResult(temp));
-                }
-                else
-                {
-                    cookTime += Time.deltaTime / visitorList.Count;
-                }
+                cook(recipe.getResult(visitorList));
+            }
+            else
+            {
+                cookTime += Time.deltaTime / visitorList.Count;
             }
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        visitorList.Add(other);
-
         if (other.gameObject.tag != "RuinedDish" && other.gameObject.tag != "Tool")
         {
+            visitorList.Add(other);
+
             cookTime = 0;
 
-            List<Collider> temp = new List<Collider>();
-
-            foreach (Collider coll in visitorList)
-            {
-                if (coll.gameObject.tag != "RuinedDish" && coll.gameObject.tag != "Tool")
-                {
-                    temp.Add(coll);
-                }
-            }
-
-            seekTime = recipe.calcTime(temp);
+            seekTime = recipe.calcTime(visitorList);
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        visitorList.Remove(other);
-
         if (other.gameObject.tag != "RuinedDish" && other.gameObject.tag != "Tool")
         {
+            visitorList.Remove(other);
+
             cookTime = 0;
 
-            List<Collider> temp = new List<Collider>();
-
-            foreach (Collider coll in visitorList)
-            {
-                if (coll.gameObject.tag != "RuinedDish" && coll.gameObject.tag != "Tool")
-                {
-                    temp.Add(coll);
-                }
-            }
-
-            seekTime = recipe.calcTime(temp);
+            seekTime = recipe.calcTime(visitorList);
         }
     }
 
@@ -113,22 +82,12 @@ public class Cooker : MonoBehaviour
     {
         cookTime = 0;
 
-        List<Collider> tools = new List<Collider>();
-
         while (visitorList.Count > 0)
         {
-            if (visitorList[0].gameObject.tag != "RuinedDish" && visitorList[0].gameObject.tag != "Tool")
-            {
-                Collider temp = visitorList[0];
+            Collider temp = visitorList[0];
 
-                visitorList.Remove(temp);
-                Destroy(temp.gameObject);
-            }
-            else
-            {
-                tools.Add(visitorList[0]);
-                visitorList.Remove(visitorList[0]);
-            }
+            visitorList.Remove(temp);
+            Destroy(temp.gameObject);
         }
 
         Instantiate(result, gameObject.transform.position + new Vector3(0, 0.1f, 0), Quaternion.identity);
