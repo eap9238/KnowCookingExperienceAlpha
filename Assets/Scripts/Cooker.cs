@@ -43,7 +43,7 @@ public class Cooker : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.tag != "RuinedDish" && other.gameObject.tag != "Tool" && other.gameObject.tag != null)
+        if (visitorList.Contains(other))
         {
             foreach (GameObject element in heatingElements)
             {
@@ -64,19 +64,22 @@ public class Cooker : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag != "RuinedDish" && other.gameObject.tag != "Tool" && other.gameObject.tag != null)
+        if (other.gameObject.tag != "Untagged")
         {
-            visitorList.Add(other);
+            if (other.gameObject.tag != "RuinedDish" && other.gameObject.tag != "Tool")
+            {
+                visitorList.Add(other);
 
-            cookTime = 0;
+                cookTime = 0;
 
-            seekTime = recipe.calcTime(visitorList);
+                seekTime = recipe.calcTime(visitorList);
+            }
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.tag != "RuinedDish" && other.gameObject.tag != "Tool" && other.gameObject.tag != null)
+        if (visitorList.Contains(other))
         {
             visitorList.Remove(other);
 

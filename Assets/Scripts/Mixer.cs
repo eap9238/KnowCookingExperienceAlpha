@@ -41,14 +41,14 @@ public class Mixer : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.tag == "Tool")
+        if (toolList.Contains(other))
         {
             if (visitorList.Count > 0)
             {
                 currentMix += (Time.deltaTime / toolList.Count); //* (other.gameObject.GetComponent<Rigidbody>().velocity.magnitude);
             }
         }
-        else if (other.gameObject.tag != "RuinedDish")
+        else if (visitorList.Contains(other))
         {
             if (currentMix > seekMix)
             {
@@ -59,27 +59,30 @@ public class Mixer : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Tool")
+        if (other.gameObject.tag != "Untagged")
         {
-            toolList.Add(other);
-        }
-        else if (other.gameObject.tag != "RuinedDish")
-        {
-            visitorList.Add(other);
+            if (other.gameObject.tag == "Tool")
+            {
+                toolList.Add(other);
+            }
+            else if (other.gameObject.tag != "RuinedDish")
+            {
+                visitorList.Add(other);
 
-            currentMix = 0;
+                currentMix = 0;
 
-            seekMix = recipe.calcTime(visitorList);
+                seekMix = recipe.calcTime(visitorList);
+            }
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.tag == "Tool")
+        if (toolList.Contains(other))
         {
             toolList.Remove(other);
         }
-        else if (other.gameObject.tag != "RuinedDish")
+        else if (visitorList.Contains(other))
         {
             visitorList.Remove(other); 
 
