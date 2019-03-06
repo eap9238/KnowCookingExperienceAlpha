@@ -12,6 +12,13 @@ TagManager:
   - Batter
   - RuinedDish
   - Rawcake
+  - Tool
+  - Threecake
+  - Twocake
+  - Cookedcake
+  - Nocake
+  - Onecake
+  - Compote
   layers:
   - Default
   - TransparentFX

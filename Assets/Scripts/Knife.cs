@@ -28,7 +28,7 @@ public class Knife : MonoBehaviour
     {
         if (cuttableObjects.ContainsKey(other.gameObject.tag))
         {
-            Debug.Log("CHOP");
+            //Debug.Log("CHOP");
             //GameObject fudge = Instantiate(cutPle, new Vector3(gameObject.transform.positionx, gameObject.transform.position.y, gameObject.transform.position.z));
             //Instantiate(cutPle, gameObject.transform);
 

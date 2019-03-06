@@ -14,10 +14,9 @@ GameObject:
   - component: {fileID: 629238948904085972}
   - component: {fileID: 4344740020423502433}
   - component: {fileID: 2495273117261490724}
-  - component: {fileID: 1993099001127788237}
   m_Layer: 0
   m_Name: Cookedcake
-  m_TagString: Untagged
+  m_TagString: Cookedcake
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -123,16 +122,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 944211baff6487d46bcc57630f8413fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1993099001127788237
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7132504556308387295}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6766952c996549642b34abfe7c7d7bd7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cutPle: {fileID: 5027139319444362000, guid: 4b78f39658193574d9f1a63cb3b5da23, type: 3}

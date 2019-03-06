@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 4684968030175026896}
   m_Layer: 0
   m_Name: Fryingpan
-  m_TagString: Untagged
+  m_TagString: Tool
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -138,16 +138,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb663089df618ec43968a4f82a8b2498, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tags:
-  - Rawcake
-  objects:
-  - {fileID: 1453050416581516619, guid: 4ab019977ca0f1240b56d738397d038c, type: 3}
-  times:
-  - 30
-  tempRecBook: {fileID: 2592527151738671840, guid: 62425c39c523fae43ac1c0107da3271a,
-    type: 3}
-  ruinedDish: {fileID: 4070902620024908153, guid: 1c020db94c86f054bab06890844f7dd4,
-    type: 3}
+  cookBook: {fileID: 0}
 --- !u!1 &1662925196
 GameObject:
   m_ObjectHideFlags: 0

@@ -109,7 +109,7 @@ public class Recipes : MonoBehaviour
         }
         else if (twoItemRecipes.ContainsKey((ingredient2, ingredient1)))
         {
-            return twoItemRecipes[(ingredient1, ingredient2)];
+            return twoItemRecipes[(ingredient2, ingredient1)];
         }
 
         return RuinedDish;
@@ -162,7 +162,7 @@ public class Recipes : MonoBehaviour
         }
         else if (twoItemTimes.ContainsKey((ingredient2, ingredient1)))
         {
-            return twoItemTimes[(ingredient1, ingredient2)];
+            return twoItemTimes[(ingredient2, ingredient1)];
         }
 
         return 30;
