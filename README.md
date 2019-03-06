@@ -1,22 +1,26 @@
 # Know Cooking Experience
-JBC Peach Developmeny
+Don’t blow up your kitchen, practice in a virtual one! Stop waiting. Start cooking.
 
-## Elevator Pitch
-Don’t blow up your kitchen, practice in a virtual one!
+### Description
 
-## Description
-Takes the player through a step-by-step process of a recipe of their choice pulled from the Wegmans' API.
+Know Cooking Experience provides a VR cooking simulation to connect you to your local grocery store to discover recipes that can be created right at home. Through Know Cooking Experience you're one step closer to becoming an experienced home chef. Practice before you buy ingredients from the store. As you play, you'll learn culinary skills and basic kitchen safety.
+Share recipes with friends and family to create your very own cookbook.
 
-## Controls
+### Controls
 
-## How's It Built
-This project was built in 3D Unity using 3D Unity in VR using data for recipes pulled from Wegmans API. All the art assets were made in Photopea and other online imaging software with the 3D models from the Unity Asset Store. The website was created with the Bootstrap Grayscale template.
+### Inspiration
 
-## Challenges
-We initially wanted to create an in depth tutorial UI screen to explain what the ingredients are, and some side recipes you can use. However we had a difficult time setting up the environment to work with 3D models from the asset store as everything came in as hot magenta models with no working shaders. Eleanor's laptop was scarified and we had to borrow a laptop.
+Consumers are wasting too much money buying ingredients from grocery stores only to fail spectarily when they go to cook it themselves.
 
-## How To Run
+### How To Run
 1. 
 2.
 3.
 
+### Special Thanks
+* Simone Center
+* Wegmans
+* Women in Computing
+
+####
+JBC Peach Development
