@@ -17,7 +17,7 @@ public class Scooped : MonoBehaviour
     void Update()
     {
 
-        if (Vector3.Dot(gameObject.transform.up, Vector3.down) > 0)
+        if (Vector3.Dot((gameObject.transform.up + gameObject.transform.forward) / 2.0f, Vector3.down) > 0)
         {
             upsideDown();
         }
@@ -25,9 +25,14 @@ public class Scooped : MonoBehaviour
 
     private void upsideDown()
     {
-        Instantiate(contents, gameObject.transform.position + (gameObject.transform.up * 0.5f), Quaternion.identity);
-        Instantiate(baseScoop, gameObject.transform.position, gameObject.transform.rotation).transform.parent = gameObject.transform.parent;
+        //Debug.Log(gameObject.transform.parent.gameObject);
+        Instantiate(contents, gameObject.transform.position + (gameObject.transform.up * 0.5f) + (gameObject.transform.forward * 0.75f), Quaternion.identity);
+        GameObject temp = Instantiate(baseScoop, gameObject.transform.position, gameObject.transform.rotation);
+        temp.transform.parent = gameObject.transform.parent;
+        temp.gameObject.GetComponent<Rigidbody>().useGravity = false;
+        temp.gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
 
+        //gameObject.transform.SetParent(GameObject.FindGameObjectWithTag("GameController").transform);
         Destroy(gameObject);
     }
 }

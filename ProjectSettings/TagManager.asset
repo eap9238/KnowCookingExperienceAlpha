@@ -30,6 +30,8 @@ TagManager:
   - Flour
   - Heatingelement
   - Appliance
+  - Halfcake
+  - Flippedcake
   layers:
   - Default
   - TransparentFX

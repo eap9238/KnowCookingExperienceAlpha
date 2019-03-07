@@ -7,6 +7,7 @@ public class Hand : MonoBehaviour
     public bool dHand;
     private bool holding;
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -18,20 +19,7 @@ public class Hand : MonoBehaviour
     {
         OVRInput.Update();
 
-        /*
-        if (OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger) >= .5 && holding == false)
-        {
-            Debug.Log(gameObject + " activate");
-            gameObject.SendMessage("activate");
-            holding = true;
-        }
-        else if (OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger) < .5)
-        {
-            Debug.Log(gameObject + " activate");
-            gameObject.SendMessage("activate");
-            holding = false;
-        }
-        */
+        
     }
 
     private void OnTriggerStay(Collider other)
@@ -56,15 +44,19 @@ public class Hand : MonoBehaviour
                             GameObject oth = other.gameObject.transform.parent.gameObject;
 
                             oth.transform.SetParent(gameObject.transform);
-                            oth.GetComponent<Rigidbody>().useGravity = false;
-                            oth.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+                            //oth.GetComponent<Rigidbody>().useGravity = false;
+                            //oth.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+
+                            oth.GetComponent<Rigidbody>().isKinematic = true;
                             holding = true;
                         }
                         else
                         {
                             other.gameObject.transform.SetParent(gameObject.transform);
-                            other.gameObject.GetComponent<Rigidbody>().useGravity = false;
-                            other.gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+                            //other.gameObject.GetComponent<Rigidbody>().useGravity = false;
+                            //other.gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+
+                            other.gameObject.GetComponent<Rigidbody>().isKinematic = true;
                             holding = true;
                         }
                     }
@@ -82,8 +74,10 @@ public class Hand : MonoBehaviour
                     if (other.gameObject.transform.parent.gameObject == gameObject)
                     {
                         other.gameObject.transform.SetParent(GameObject.FindGameObjectWithTag("GameController").transform);
-                        other.gameObject.GetComponent<Rigidbody>().useGravity = true;
-                        other.gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+                        //other.gameObject.GetComponent<Rigidbody>().useGravity = true;
+                        //other.gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+                        
+                        other.gameObject.GetComponent<Rigidbody>().isKinematic = false;
                     }
                 }
                 else
@@ -93,8 +87,10 @@ public class Hand : MonoBehaviour
                     if (oth.transform.parent.gameObject == gameObject)
                     {
                         oth.transform.SetParent(GameObject.FindGameObjectWithTag("GameController").transform);
-                        oth.GetComponent<Rigidbody>().useGravity = true;
-                        oth.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+                        //oth.GetComponent<Rigidbody>().useGravity = true;
+                        //oth.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+
+                        oth.GetComponent<Rigidbody>().isKinematic = false;
                     }
                 }
             }
@@ -119,15 +115,19 @@ public class Hand : MonoBehaviour
                             GameObject oth = other.gameObject.transform.parent.gameObject;
 
                             oth.transform.SetParent(gameObject.transform);
-                            oth.GetComponent<Rigidbody>().useGravity = false;
-                            oth.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+                            //oth.GetComponent<Rigidbody>().useGravity = false;
+                            //oth.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+
+                            oth.GetComponent<Rigidbody>().isKinematic = true;
                             holding = true;
                         }
                         else
                         {
                             other.gameObject.transform.SetParent(gameObject.transform);
-                            other.gameObject.GetComponent<Rigidbody>().useGravity = false;
-                            other.gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+                            //other.gameObject.GetComponent<Rigidbody>().useGravity = false;
+                            //other.gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+
+                            other.gameObject.GetComponent<Rigidbody>().isKinematic = true;
                             holding = true;
                         }
                     }
@@ -142,22 +142,26 @@ public class Hand : MonoBehaviour
 
                 if (other.gameObject.GetComponent<Rigidbody>() != null)
                 {
-                    if (other.gameObject.transform.parent != null && other.gameObject.transform.parent.gameObject == gameObject)
+                    if (other.gameObject.transform.parent.gameObject == gameObject)
                     {
                         other.gameObject.transform.SetParent(GameObject.FindGameObjectWithTag("GameController").transform);
-                        other.gameObject.GetComponent<Rigidbody>().useGravity = true;
-                        other.gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+                        //other.gameObject.GetComponent<Rigidbody>().useGravity = true;
+                        //other.gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+
+                        other.gameObject.GetComponent<Rigidbody>().isKinematic = false;
                     }
                 }
                 else
                 {
                     GameObject oth = other.gameObject.transform.parent.gameObject;
 
-                    if (oth.transform.parent != null && oth.transform.parent.gameObject == gameObject)
+                    if (oth.transform.parent.gameObject == gameObject)
                     {
                         oth.transform.SetParent(GameObject.FindGameObjectWithTag("GameController").transform);
-                        oth.GetComponent<Rigidbody>().useGravity = true;
-                        oth.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+                        //oth.GetComponent<Rigidbody>().useGravity = true;
+                        //oth.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+
+                        oth.GetComponent<Rigidbody>().isKinematic = false;
                     }
                 }
             }
@@ -166,12 +170,18 @@ public class Hand : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
+        //Debug.Log(other.gameObject);
+
         if (other.gameObject.GetComponent<Rigidbody>() != null)
         {
             if (other.gameObject.transform.parent != null && other.gameObject.transform.parent.gameObject == gameObject)
             {
+                Debug.Log(other.gameObject);
+
                 other.gameObject.transform.SetParent(GameObject.FindGameObjectWithTag("GameController").transform);
-                other.gameObject.GetComponent<Rigidbody>().useGravity = true;
+                //other.gameObject.GetComponent<Rigidbody>().useGravity = true;
+
+                other.gameObject.GetComponent<Rigidbody>().isKinematic = false;
 
                 holding = false;
             }
@@ -182,8 +192,12 @@ public class Hand : MonoBehaviour
 
             if (oth.transform.parent != null && oth.transform.parent.gameObject == gameObject)
             {
+                Debug.Log(oth);
+
                 oth.transform.SetParent(GameObject.FindGameObjectWithTag("GameController").transform);
-                oth.GetComponent<Rigidbody>().useGravity = true;
+                //oth.GetComponent<Rigidbody>().useGravity = true;
+
+                oth.GetComponent<Rigidbody>().isKinematic = false;
 
                 holding = false;
             }

@@ -5,7 +5,6 @@ using UnityEngine;
 public class clickManager : MonoBehaviour
 {
     public GameObject[] locations;
-    public GameObject vehicle;
 
     int currentLoc = 0;
 
@@ -14,7 +13,7 @@ public class clickManager : MonoBehaviour
     {
         //Debug.Log(UnityEngine.Input.GetJoystickNames());
 
-        vehicle.transform.position = locations[currentLoc].transform.position;
+        gameObject.transform.position = locations[currentLoc].transform.position;
     }
 
     // Update is called once per frame
@@ -22,6 +21,7 @@ public class clickManager : MonoBehaviour
     {
         OVRInput.Update();
 
+        /*
         if (OVRInput.GetDown(OVRInput.Button.One))
         {
             //Debug.Log("Boogie Woogie");
@@ -75,7 +75,9 @@ public class clickManager : MonoBehaviour
                 obj.SendMessage("push");
             }
         }
-        if (OVRInput.GetDown(OVRInput.Button.DpadLeft))
+        */
+
+        if (OVRInput.GetDown(OVRInput.Button.Three))
         {
             currentLoc--;
 
@@ -84,10 +86,10 @@ public class clickManager : MonoBehaviour
                 currentLoc = locations.Length - 1;
             }
 
-            vehicle.transform.position = locations[currentLoc].transform.position;
+            gameObject.transform.position = locations[currentLoc].transform.position;
         }
 
-        if (OVRInput.GetDown(OVRInput.Button.DpadRight))
+        if (OVRInput.GetDown(OVRInput.Button.One))
         {
             currentLoc++;
 
@@ -96,7 +98,7 @@ public class clickManager : MonoBehaviour
                 currentLoc = 0;
             }
 
-            vehicle.transform.position = locations[currentLoc].transform.position;
+            gameObject.transform.position = locations[currentLoc].transform.position;
         }
 
     }

@@ -21,17 +21,22 @@ public class Scoop : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     private void OnTriggerEnter(Collider collision)
     {
-        if (scoopList.ContainsKey(collision.gameObject.tag) && Vector3.Dot(gameObject.transform.up, Vector3.down) < 0)
+        if (scoopList.ContainsKey(collision.gameObject.tag) && Vector3.Dot((gameObject.transform.up + gameObject.transform.forward) / 2.0f, Vector3.down) < 0)
         {
             collision.SendMessage("scoop");
 
-            Instantiate(scoopList[collision.gameObject.tag], gameObject.transform.position, gameObject.transform.rotation).transform.parent = gameObject.transform.parent;
-
+            //Debug.Log(gameObject.transform.parent.gameObject);
+            GameObject temp = Instantiate(scoopList[collision.gameObject.tag], gameObject.transform.position, gameObject.transform.rotation);
+            temp.transform.parent = gameObject.transform.parent;
+            temp.gameObject.GetComponent<Rigidbody>().useGravity = false;
+            temp.gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+            
+            //gameObject.transform.SetParent(GameObject.FindGameObjectWithTag("GameController").transform);
             Destroy(gameObject);
         }
     }
