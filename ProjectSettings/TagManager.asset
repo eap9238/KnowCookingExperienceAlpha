@@ -29,6 +29,7 @@ TagManager:
   - Vanilla
   - Flour
   - Heatingelement
+  - Appliance
   layers:
   - Default
   - TransparentFX

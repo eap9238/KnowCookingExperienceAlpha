@@ -19,7 +19,7 @@ public class GasManager : MonoBehaviour
         
     }
 
-    public void activate()
+    private void onTriggerEnter()
     {
         if (fireOn)
         {

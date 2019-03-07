@@ -5,26 +5,20 @@ using UnityEngine;
 public class Ingredient : MonoBehaviour
 {
     private GameObject player;
-    private bool parented;
 
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
-        parented = false;
+        player = GameObject.FindGameObjectWithTag("MainCamera");
     }
 
     // Update is called once per frame
     void Update()
     {
         transform.LookAt(player.transform);
-
-        if (parented)
-        {
-            gameObject.GetComponent<Rigidbody>().velocity = Vector2.zero;
-        }
     }
 
+    /*
     public void activate()
     {
         if (!parented)
@@ -83,12 +77,12 @@ public class Ingredient : MonoBehaviour
             gameObject.transform.Translate((-gameObject.transform.forward) / 10);
         }
     }
-
-    */
-
+    
     private void OnCollisionEnter(Collision collision)
     {
         gameObject.transform.SetParent(GameObject.FindGameObjectWithTag("GameController").transform);
         gameObject.GetComponent<Rigidbody>().useGravity = true;
     }
+
+    */
 }

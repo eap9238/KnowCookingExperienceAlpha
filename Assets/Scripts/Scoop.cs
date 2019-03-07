@@ -26,11 +26,11 @@ public class Scoop : MonoBehaviour
 
     private void OnTriggerEnter(Collider collision)
     {
-        if (scoopList.ContainsKey(collision.gameObject.tag))
+        if (scoopList.ContainsKey(collision.gameObject.tag) && Vector3.Dot(gameObject.transform.up, Vector3.down) < 0)
         {
             collision.SendMessage("scoop");
 
-            Instantiate(scoopList[collision.gameObject.tag], gameObject.transform.position, Quaternion.identity, gameObject.transform.parent);
+            Instantiate(scoopList[collision.gameObject.tag], gameObject.transform.position, gameObject.transform.rotation).transform.parent = gameObject.transform.parent;
 
             Destroy(gameObject);
         }

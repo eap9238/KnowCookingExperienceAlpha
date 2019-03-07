@@ -24,6 +24,8 @@ public class Tool : MonoBehaviour
         }
     }
 
+    /*
+
     public void activate()
     {
         if (!parented)
@@ -63,7 +65,6 @@ public class Tool : MonoBehaviour
         }
     }
 
-    /*
 
     public void left()
     {
@@ -83,11 +84,11 @@ public class Tool : MonoBehaviour
         }
     }
 
-    */
-
     private void OnCollisionEnter(Collision collision)
     {
         gameObject.transform.SetParent(GameObject.FindGameObjectWithTag("GameController").transform);
         gameObject.GetComponent<Rigidbody>().useGravity = true;
     }
+
+    */
 }

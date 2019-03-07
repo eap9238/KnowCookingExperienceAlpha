@@ -26,7 +26,7 @@ public class Scooped : MonoBehaviour
     private void upsideDown()
     {
         Instantiate(contents, gameObject.transform.position + (gameObject.transform.up * 0.5f), Quaternion.identity);
-        Instantiate(baseScoop, gameObject.transform.position, Quaternion.identity, gameObject.transform.parent);
+        Instantiate(baseScoop, gameObject.transform.position, gameObject.transform.rotation).transform.parent = gameObject.transform.parent;
 
         Destroy(gameObject);
     }
